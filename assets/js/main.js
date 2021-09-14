@@ -5,7 +5,8 @@ const ledEl = document.querySelector('#led')
 calculatorEl.addEventListener('click',(e) => {
     let el  = e.target;
    
-    if(ledEl.innerHTML.length > 13) return alert('Números excedidos!') ;
+    if(ledEl.innerHTML.length >= 9)
+    {  ledEl.innerHTML = ' ' , alert('Números excedidos(10)!') } 
     if(el.classList.contains('btnC')) ledEl.innerHTML = ' ';
     if(el.classList.contains('btn7')) ledEl.innerHTML += '7'
     if(el.classList.contains('btn8')) ledEl.innerHTML += '8'
@@ -30,3 +31,28 @@ calculatorEl.addEventListener('click',(e) => {
    
 }) 
 
+document.addEventListener('keypress', (e) => {
+    if(ledEl.innerHTML.length >= 10)
+    {  ledEl.innerHTML = ' ' , alert('Números excedidos(10)!') } 
+    if(e.keyCode === 99) ledEl.innerHTML = ' '
+    if(e.keyCode === 55) ledEl.innerHTML += '7'
+    if(e.keyCode === 56) ledEl.innerHTML += '8'
+    if(e.keyCode === 57) ledEl.innerHTML += '9'
+    if(e.keyCode === 52) ledEl.innerHTML += '4'
+    if(e.keyCode === 53) ledEl.innerHTML += '5'
+    if(e.keyCode === 54) ledEl.innerHTML += '6'
+    if(e.keyCode === 49) ledEl.innerHTML += '1'
+    if(e.keyCode === 50) ledEl.innerHTML += '2'
+    if(e.keyCode === 51) ledEl.innerHTML += '3'
+    if(e.keyCode === 48) ledEl.innerHTML += '0'
+    if(e.keyCode === 46) ledEl.innerHTML += '.'
+    if(e.keyCode === 42) ledEl.innerHTML += '*'
+    if(e.keyCode === 43) ledEl.innerHTML += '+'
+    if(e.keyCode === 45) ledEl.innerHTML += '-'
+    if(e.keyCode === 47) ledEl.innerHTML += '/'
+    if(e.keyCode === 40) ledEl.innerHTML += '('
+    if(e.keyCode === 41) ledEl.innerHTML += ')'
+    if(e.keyCode === 13) ledEl.innerHTML = eval(ledEl.innerText)
+    if(e.keyCode === 60) ledEl.innerHTML = ledEl.innerHTML.substring(0, ledEl.innerHTML.length - 1)
+    
+})
